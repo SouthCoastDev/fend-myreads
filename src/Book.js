@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 
 class Book extends Component {
     render () {
+        let bookThumbNail =  this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail : ''
         return (
-            <div className="book">
+            <div key={this.props.book.id} className="book">
                 <div className="book-top">
                 <div className="book-cover" style={{
                      width: 128, height: 193,
-                      backgroundImage: `url('${this.props.book.imageLinks.thumbnail}')` 
+                      backgroundImage: `url('${bookThumbNail}')` 
                      }}></div>
                 <div className="book-shelf-changer">
                     <select onChange={ (e) => this.props.changeShelf(

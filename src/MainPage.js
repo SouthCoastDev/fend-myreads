@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Book from './Book'
+import { Link } from 'react-router-dom'
 
 class MainPage extends Component {
     render () {
@@ -38,11 +39,13 @@ class MainPage extends Component {
                             this.props.books.filter(
                                 book => book.shelf === 'wantToRead' 
                             ).map(book => (
-                                <Book 
-                                    book = {book}
-                                    changeShelf = {this.props.changeShelf}
-                                    currentShelf = "wantToRead"
-                                />
+                                <li key={book.id}>
+                                    <Book 
+                                        book = {book}
+                                        changeShelf = {this.props.changeShelf}
+                                        currentShelf = "wantToRead"
+                                    />
+                                </li>
                             ))
                         }
                     </ol>
@@ -71,7 +74,9 @@ class MainPage extends Component {
               </div>
             </div>
             <div className="open-search">
-              <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+              <Link 
+                to = '/search'
+              >Add a book</Link>
             </div>
           </div>
         )
